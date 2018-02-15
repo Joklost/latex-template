@@ -1,0 +1,38 @@
+\input{setup/preamble.tex}% package inclusion and set up of the document
+\input{setup/hyphenations.tex}%
+\input{setup/macros.tex}% my new macros
+
+\input{setup/Glossary.tex}
+
+\begin{document}
+% Sætter vores listing environment til C# kode ordentligt op.
+\lstset{basicstyle=\tiny, tabsize = 2, xleftmargin = 5pt, keepspaces = true, numbersep = 5pt }
+%frontmatter
+
+\pagestyle{empty} %disable headers and footers
+\pagenumbering{roman} %use roman page numbering in the frontmatter
+\input{sections/00-Setup/frontpage.tex}
+\input{sections/00-Setup/colophon.tex}
+\input{sections/00-Setup/titlepages.tex}
+\cleardoublepage
+\pdfbookmark[0]{Table of contents}{label:contents}
+\pagestyle{fancy} %enable headers and footers again
+\setcounter{tocdepth}{1}
+\tableofcontents
+\input{sections/00-Setup/preface.tex}
+
+%mainmatter
+\pagenumbering{arabic} %use arabic page numbering in the mainmatter
+
+\input{sections/00-Setup/01-introduction.tex}
+
+%\nocite{*}
+\bibliography{bib/mybib}
+\label{bib:mybiblio}
+
+\appendix
+\printnoidxglossaries
+\input{sections/99-Appendix/00-main.tex}
+
+
+\end{document}
